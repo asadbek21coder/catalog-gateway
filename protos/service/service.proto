@@ -9,6 +9,22 @@ service Service {
     rpc GetById (Id) returns (Book) {}
     rpc Update (Book) returns (Book) {}
     rpc Delete (Id) returns (Id) {}
+
+    rpc GetAllCategories (GetAllRequest) returns (Categories) {}
+    rpc CreateCategory (Category) returns (Category) {}
+    rpc GetCategoryById (Id) returns (Category) {}
+    rpc UpdateCategory (Category) returns (Category) {}
+    rpc DeleteCategory (Id) returns (Id) {}
+}
+
+message Category {
+    int32 id = 1;
+    string name = 2;
+}
+
+message Categories {
+    repeated Category categories = 1;
+    int32 count = 2;
 }
 
 message Book {

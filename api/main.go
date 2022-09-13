@@ -52,12 +52,19 @@ func New(opt *RouterOptions) *gin.Engine {
 
 	apiV1 := router.Group("/v1")
 
-	// posts
+	// books
 	apiV1.GET("/books", handlerV1.GetAll)
 	apiV1.GET("/books/:id", handlerV1.GetById)
 	apiV1.POST("/books", handlerV1.Create)
 	apiV1.PUT("/books", handlerV1.Update)
 	apiV1.DELETE("/books/:id", handlerV1.Delete)
+
+	//categories
+	apiV1.GET("/categories", handlerV1.GetAllCategories)
+	apiV1.GET("/categories/:id", handlerV1.GetCategoryById)
+	apiV1.POST("/categories", handlerV1.CreateCategory)
+	apiV1.PUT("/categories", handlerV1.UpdateCategory)
+	apiV1.DELETE("/categories/:id", handlerV1.DeleteCategory)
 
 	// swagger
 	url := ginSwagger.URL("swagger/doc.json") // The url pointing to API definition
